@@ -1,0 +1,53 @@
+<?php ob_start(); ?>
+
+    <div class="mx-5">
+        <h2 class="text-info fs-1 fw-bold fst-italic">
+            <i class="fas fa-file-alt"></i> Article 
+        </h2>
+
+        <h3 class="fs-2"> <?= $article->getTitre(); ?> </h3>
+
+        <p class="fs-3">
+            <?= $article->getContenu(); ?>
+        </p>
+
+        <div>
+           <i class="fas fa-pen text-info"></i> <span class="text-info fs-5 fw-bold">Rédigé par</span> <span class="fw-bold fs-3"> <?= $mdl_auteur->getAuteur( $article->getAuteur())->getPrenom(); ?> </span>
+        </div>
+    </div>
+    
+    <?php if(!empty($commentaires)): ?>
+    <hr>
+        <?php foreach($commentaires as $key => $value): ?>
+            <div class="mx-5 p-2">
+                <i class="fas fa-comment text-info"></i> <span class="text-info fs-5 fw-bold">Rédigé par</span> <span class="fs-4 fw-bold fst-italic text-capitalize"><?= $value->getPseudo(); ?></span>
+                <div class="fs-5"><?= $value->getContenus(); ?></div>
+            </div>
+            
+        <?php endforeach; ?>
+    <hr>   
+    <?php endif; ?>  
+    <div class="mx-auto mt-5 w-50 border border-2 border-info p-4 bg-light rounded-3">
+          <h4 class="fs-1 fw-bold text-center text-info text-capitalize bg-dark"> <i class="fas fa-comment"></i> Nouveau commentaire</h4>
+          <form action="" method="post">
+               <input type="hidden" name="id" value="<?= $article->getId(); ?>">
+               <div class="form-group">
+                    <label for="" class="fs-2 fw-bold">Pseudo:</label>
+                    <input type="text" name="pseudo" class="form-control">
+               </div>
+
+               <div class="form-group">
+                    <label for="" class="fs-2 fw-bold">Commentaire:</label>
+                    <textarea name="contenus" class="form-control" cols="30" rows="10"></textarea>
+               </div>
+
+               <div class="mt-2 text-center">
+                    <input type="submit" class="btn btn-success fs-2 fw-bold fst-italic">
+                    <input type="reset" class="btn btn-danger fs-2 fw-bold fst-italic">
+               </div>
+
+          </form>
+     </div>
+
+<?php $content = ob_get_clean();
+        include('vues/template.phtml');

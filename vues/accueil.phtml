@@ -1,0 +1,21 @@
+<?php ob_start() ?>
+
+    <div class="mx-auto mt-5 w-75 border border-2 border-info p-5 bg-">     
+        <h2 class="text-info text-center fs-1 fw-bold fst-italic bg-dark w-auto"><i class="fas fa-home"></i> Accueil</h2>
+
+        <ul class="list-group fw-bold fs-4 fst-italic">
+            <?php foreach($articles as $key => $article): ?>
+            <li class="list-group-item ">
+                <a href="?action=getArt&id=<?= $article->getId(); ?>">
+                    <i class="fas fa-hand-point-right"></i> <?= $article->getTitre(); ?>
+                </a>
+            </li>
+            <li class="list-group-item"><?= substr($article->getContenu(), 0 ,15); ?></li>
+            <li class="list-group-item"> Rédigé par <?= $mdl_auteur->getAuteur( $article->getAuteur() )->getPrenom(); ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+
+<?php 
+    $content = ob_get_clean();
+    include 'vues/template.phtml';

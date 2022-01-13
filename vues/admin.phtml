@@ -1,0 +1,74 @@
+<?php ob_start(); ?>
+
+    <h2 class="text-info text-uppercase fs-1 fw-bold fst-italic">
+        <i class="fas fa-cog"></i> Pannneau de configuration
+    </h2>
+    <a href="?action=newArticle" class="text-info fs-2 fw-bold fst-italic">Rédider un nouvel article</a>
+
+    <h2 class="text-center text-capitalize fs-2 fw-bold fst-italic">Liste des articles</h2>
+
+    <table class="table table-striped table-hover">
+        <tr class="table-dark">
+            <th>Titre</th>
+            <th>Article</th>
+            <th>Auteur</th>
+            <th>Catégorie</th>
+            <th>Action</th>
+        </tr>
+
+        <?php foreach($articles as $key => $article): ?>
+            <tr>
+                <td> <?= $article->getTitre(); ?> </td>
+                <td> <?= substr($article->getContenu(),0 ,10); ?> </td>
+                <td> <?= $mdl_auteur->getAuteur($article->getAuteur() )->getPrenom() ?> </td>
+                <td> <?= $article->getCategorie() ?> </td>
+
+                <td>
+                    <a data-bs-toggle="modal" data-bs-target="#modal<?= $article->getId(); ?>" href="?action=update&id=<?= $article->getId(); ?>">
+                        <i class="fas fa-pen"></i>
+                    </a>
+                    &nbsp; - &nbsp;
+
+                    <a href="?action=delete&id=<?= $article->getId(); ?>"><i class="fas fa-trash"></i></a>
+                </td>
+
+            </tr>
+        <?php endforeach; ?>   
+
+    </table>
+    
+    <?php foreach($articles as $key => $article): ?>
+        
+        <div class="modal fade" id="modal<?= $article->getId(); ?>" tabindex="-1" aria-labelledby="<?= $article->getId(); ?>" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-info">
+                    <div class="modal-header">
+                        <h5 class="modal-title fs-2 fw-bold" id="exampleModalLabel">Modifier un article</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post">
+                            <input type="hidden" name="id" value="<?= $article->getId(); ?>">
+                            <div class="form-group">
+                                <label class="fs-3 fw-bold ">Titre:</label>
+                                <input type="text" name="titre" value="<?= $article->getTitre(); ?>" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="fs-3 fw-bold ">Contenu:</label>
+                                <textarea name="contenu" class="form-control" id="" cols="30" rows="10"><?= $article->getContenu(); ?></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary fs-5 fw-bold" data-bs-dismiss="modal">Fermer</button>
+                                <button type="submit" class="btn btn-primary fs-5 fw-bold">Sauvgarder les modifications</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    <?php endforeach; ?>    
+<?php $content = ob_get_clean();
+
+    include "vues/template.phtml";

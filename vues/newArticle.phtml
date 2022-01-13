@@ -1,0 +1,57 @@
+<?php ob_start(); ?>
+
+
+    <div >
+        <a href="?action=adminArt" ><h1 class="fs-1 fw-bold fst-italic text-capitalize"><i class="fas fa-cogs "></i>Panneau d'Administration</h1></a> <br>
+        <div class="text-info fs-2 fw-bold fst-italic"><i class="fas fa-pen  fw-bold "></i> Editer un article</div>
+    </div>
+
+    
+    <div class="card mx-auto " style="width:400px">
+                <div class="card-body bg-info text-white">
+                        <h2 class="card-title text-center fs-1 fw-bold fst-italic"><i class="fas fa-file-alt"></i> Nouvel article</h2>
+                    <form action="" method="post">
+
+                        <div class="form-group">
+                            <label for="" class="fs-2 fw-bold fst-italic">Titre:</label><br>
+                            <input type="text" name="titre" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="fs-2 fw-bold fst-italic">Article:</label><br>
+                            <textarea class="form-control" name="contenu" rows="3"></textarea>
+                        </div>
+       
+                            <div>
+                                <label for="" class="fs-2 fw-bold fst-italic">Auteur:</label>
+                                <select class="form-select" name="auteur">
+                                    <?php foreach($auteurs as $key => $auteur):?> 
+                                        <option value="<?= $auteur->getId() ?>">
+                                            <?= $auteur->getPrenom() ?>
+                                        </option>
+                                    <?php endforeach; ?> 
+                                 </select>
+                            </div>
+
+                            <div>
+                                <label for="" class="fs-2 fw-bold fst-italic">Catégorie:</label>
+                                <select class="form-select" name="categorie">
+                                    <?php foreach($articles as $key => $article): ?>      
+                                        <option value="<?= $article->getCategorie() ?>"><?= $article->getCategorie() ?></option>
+                                    <?php endforeach; ?> 
+                                </select>
+                            </div>   
+                        <div class="mt-2 text-center">
+                            <input type="submit" class="btn btn-success fs-2 fw-bold fst-italic">
+                            <input type="reset" class="btn btn-danger fs-2 fw-bold ">
+                        </div>
+                    </form>
+                
+                </div>
+    </div>
+    
+
+
+<?php $content = ob_get_clean();
+
+    include("vues/template.phtml");
