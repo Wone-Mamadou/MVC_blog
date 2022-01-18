@@ -5,6 +5,8 @@ class Ctl_article{
     public function Url_article(){
         $mdl_auteur = new ModeleAuteur();
         $mdl_article = new ModeleArticle();
+        $mdl_categorie = new ModelCategorie();
+        $mdl_commentaire = new ModeleCommentaire();
 
                             // pour différencier "update" et "ajout"
         if( isset($_POST['titre']) && !empty($_POST['id']) ){
@@ -26,7 +28,7 @@ class Ctl_article{
             if( $action == "getArt" && ctype_digit($_GET['id']) ){
                 
                 $article = $mdl_article->getArticle($_GET['id']);
-                $commentaires = $mdl_article->getCommentaire($_GET['id']);
+                $commentaires = $mdl_commentaire->getCommentaire($_GET['id']);
                 include "vues/article.phtml";
             }elseif( $action == "adminArt"){
                 
@@ -47,7 +49,10 @@ class Ctl_article{
 
             }elseif($action == "newArticle"){
                 $articles = $mdl_article->getAllArticle();
+
                 $auteurs = $mdl_auteur->getAllAuteur();
+
+                $categories = $mdl_categorie->getAllCategorie();
 
                 if(!empty($_POST['titre']) ){
                     extract($_POST);
@@ -66,8 +71,8 @@ class Ctl_article{
             //var_dump($_POST);
             extract($_POST);
             $commentaire = new Commentaire(0, $pseudo, $contenus, $article);
-            $mdl_article->insertCom($commentaire);
-            header("location: ?action=newArt");
+            $mdl_commentaire->insertCom($commentaire);
+            header("location: ?action=getArt");
             exit;
 
         }

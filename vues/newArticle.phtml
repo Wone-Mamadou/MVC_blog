@@ -36,8 +36,8 @@
                             <div>
                                 <label for="" class="fs-2 fw-bold fst-italic">Catégorie:</label>
                                 <select class="form-select" name="categorie">
-                                    <?php foreach($articles as $key => $article): ?>      
-                                        <option value="<?= $article->getCategorie() ?>"><?= $article->getCategorie() ?></option>
+                                    <?php foreach($categories as $key => $categorie): ?>      
+                                        <option value="<?= $categorie->getNom() ?>"><?= $categorie->getNom() ?></option>
                                     <?php endforeach; ?> 
                                 </select>
                             </div>   

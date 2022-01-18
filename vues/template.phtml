@@ -15,6 +15,25 @@
                             color: black;
                         }
 
+    .btn-c, .btn-s{
+      padding: 25px 15px;
+      color: white;
+      border-radius: 40px;
+      width: 400px;
+      font: bold 30px Georgia;
+      box-shadow: 2px 2px 2px white;
+      text-transform: uppercase;
+
+  }  
+  
+  .btn-s{
+      background-color: #0d6efd;
+  }
+
+  .btn-c{
+      background-color: #20c997;
+  }
+  
  
     </style>
 </head>
@@ -24,22 +43,23 @@
         <h1 class="text-center text-uppercase text-primary fs-1 fst-italic fw-bold">
             <a href="."><i class="fas fa-microphone"></i>Encore un blog</a> 
         </h1>
-
-        <nav class="text-end fs-1 fst-italic fw-bold">
-            <a href="?action=adminArt"><i class="fas fa-cogs"></i> Administration</a>
-        </nav>
-
+        <?php if( !empty($_SESSION['auteur'])): ?>
+            <nav class=" fs-1 fst-italic fw-bold">
+                <a href="?action=adminArt"><i class="fas fa-cogs"></i> Administration</a>
+            </nav>
+        <?php endif; ?> 
         <nav>
             <?php if( empty($_SESSION['auteur'])): ?>
-                <a href="?action=inscription" class="fs-1 fst-italic fw-bold text-decoration-none mark">Inscription</a>
+                <a href="?action=inscription" class="rounded-pill bg-info p-3 fs-1 fw-bold text-white fst-italic text-decoration-none text-uppercase" style="box-shadow: 2px 2px 2px white;">Inscription</a> 
                 &nbsp;  &nbsp;
-                <a href="?action=connexion" class="fs-1 fst-italic fw-bold text-decoration-none mark">Connexion</a>
+                <a href="?action=connexion" class="rounded-pill bg-success p-3 fs-1 fw-bold text-white fst-italic text-decoration-none text-uppercase" style="box-shadow: 2px 2px 2px white;">Connexion</a>
             <?php else: ?>
                 <div class="text-end fs-1 fst-italic fw-bold">
                     <?= "Bonjour " . unserialize($_SESSION['auteur'])->getPrenom() ?>
-                    <a href="?action=deconnexion" class="text-decoration-none"><mark>Déconnexion</mark></a>
+                    <a href="?action=deconnexion" class="rounded-pill bg-danger p-2 fs-1 fw-bold text-white fst-italic text-decoration-none text-uppercase ">Déconnexion</a>
                 </div>
-            <?php endif; ?>    
+            <?php endif; ?>   
+            
         </nav>
 
         

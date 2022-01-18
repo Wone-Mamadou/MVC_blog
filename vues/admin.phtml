@@ -5,7 +5,7 @@
     </h2>
     <a href="?action=newArticle" class="text-info fs-2 fw-bold fst-italic">Rédider un nouvel article</a>
 
-    <h2 class="text-center text-capitalize fs-2 fw-bold fst-italic">Liste des articles</h2>
+    <h2 class="text-center text-capitalize fs-2 fw-bold fst-italic ">Liste des articles</h2>
 
     <table class="table table-striped table-hover">
         <tr class="table-dark">
@@ -29,7 +29,9 @@
                     </a>
                     &nbsp; - &nbsp;
 
-                    <a href="?action=delete&id=<?= $article->getId(); ?>"><i class="fas fa-trash"></i></a>
+                    <a data-bs-toggle="modal" data-bs-target="#modals<?= $article->getId(); ?>" href="?action=delete&id=<?= $article->getId(); ?>">
+                        <i class="fas fa-trash"></i>
+                    </a>
                 </td>
 
             </tr>
@@ -60,6 +62,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary fs-5 fw-bold" data-bs-dismiss="modal">Fermer</button>
                                 <button type="submit" class="btn btn-primary fs-5 fw-bold">Sauvgarder les modifications</button>
+                                
                             </div>
                         </form>
                     </div>
@@ -68,7 +71,27 @@
             </div>
         </div>
 
-    <?php endforeach; ?>    
+    <?php endforeach; ?> 
+
+    <?php foreach($articles as $key => $article): ?>
+        <div class="modal fade" id="modals<?= $article->getId(); ?>" tabindex="-1" aria-labelledby="<?= $article->getId(); ?>" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content bg-info">
+                    <div class="modal-header">
+                        <h5 class="modal-title fs-2 fw-bold" id="exampleModalLabel">Veuillez confirmer la suprression</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    
+                    <div class="modal-body container justify-center">
+                        <a class="btn btn-danger fs-5 fw-bold" href="?action=delete&id=<?= $article->getId(); ?>">OUI</a>
+                        <button type="button" class="btn btn-success fs-5 fw-bold" data-bs-dismiss="modal">NON</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?> 
 <?php $content = ob_get_clean();
 
     include "vues/template.phtml";

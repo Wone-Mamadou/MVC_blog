@@ -4,10 +4,13 @@ session_start();
 include "classes/Article.php";
 include "classes/Auteur.php";
 include('classes/Commentaire.php');
+include "classes/Categorie.php";
 
 include "modele/ModeleGenerique.php";
 include "modele/ModeleArticle.php";
 include "modele/ModeleAuteur.php";
+include "modele/ModeleCategorie.php";
+include "modele/ModeleCommentaire.php";
 
 include "controleur/Ctl_article.php";
 include "controleur/Ctl_auteur.php";
