@@ -1,0 +1,102 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url("style.css/tof-profil.jpeg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Monsterat', sans-serif;
+    color: #fff;
+}
+
+.BoxForm{
+    width: 400px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 12px;
+    padding: 0 24px 48px;
+    box-shadow: 0 1px 20px 7px rgba(255, 255, 255, 0.5);
+    box-sizing: border-box;
+}
+
+.BoxForm h2{
+    line-height: 50px;
+    margin: 25px 0; 
+    letter-spacing: 3px;
+    text-align: center; 
+}
+.BoxForm .inputBox{
+    position: relative;
+}
+
+.BoxForm .inputBox input{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #fff ;
+    background: transparent;
+}
+
+.BoxForm .inputBox label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.BoxForm .inputBox input:focus ~ label,
+.BoxForm .inputBox input:valid ~ label{
+    top: -22px;
+    left: 0;
+    font-size: 14px;
+    color: #fcdb00;
+}
+
+.BoxForm input[type="submit"]{
+    background-color: #fcdb00;
+    border: none;
+    outline: none;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;    
+}
+
+.BoxForm input[type="submit"]:hover{
+    background:  #DAF7A6
+
+}
+
+/* **************************************essai *****************************/
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.btn-c, .btn-s{
+padding: 25px 15px;
+color: white;
+border-radius: 40px;
+width: 400px;
+font: bold 30px Georgia;
+box-shadow: 2px 2px 2px white;
+text-transform: uppercase;
+
+}  
+
+.btn-s{
+background-color: #0d6efd;
+}
+
+.btn-c{
+background-color: #20c997;
+}
