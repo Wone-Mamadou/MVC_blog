@@ -16,11 +16,11 @@
             <th>Action</th>
         </tr>
 
-        <?php foreach($articles as $key => $article): ?>
+        <?php foreach ($articles as $key => $article): ?>
             <tr>
                 <td> <?= $article->getTitre(); ?> </td>
-                <td> <?= substr($article->getContenu(),0 ,10); ?> </td>
-                <td> <?= $mdl_auteur->getAuteur($article->getAuteur() )->getPrenom() ?> </td>
+                <td> <?= substr($article->getContenu(), 0, 15); ?> </td>
+                <td> <?= $mdl_auteur->getAuteur($article->getAuteur())->getPrenom() ?> </td>
                 <td> <?= $article->getCategorie() ?> </td>
 
                 <td>
@@ -39,11 +39,11 @@
 
     </table>
     
-    <?php foreach($articles as $key => $article): ?>
+    <?php foreach ($articles as $key => $article): ?>
         
         <div class="modal fade" id="modal<?= $article->getId(); ?>" tabindex="-1" aria-labelledby="<?= $article->getId(); ?>" aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content bg-info">
+                <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <h5 class="modal-title fs-2 fw-bold" id="exampleModalLabel">Modifier un article</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -60,8 +60,8 @@
                                 <textarea name="contenu" class="form-control" id="" cols="30" rows="10"><?= $article->getContenu(); ?></textarea>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary fs-5 fw-bold" data-bs-dismiss="modal">Fermer</button>
-                                <button type="submit" class="btn btn-primary fs-5 fw-bold">Sauvgarder les modifications</button>
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fermer</button>
+                                <button type="submit" class="btn btn-outline-secondary">Sauvgarder les modifications</button>
                                 
                             </div>
                         </form>
@@ -73,10 +73,10 @@
 
     <?php endforeach; ?> 
 
-    <?php foreach($articles as $key => $article): ?>
+    <?php foreach ($articles as $key => $article): ?>
         <div class="modal fade" id="modals<?= $article->getId(); ?>" tabindex="-1" aria-labelledby="<?= $article->getId(); ?>" aria-hidden="true">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content bg-info">
+                <div class="modal-content bg-secondary">
                     <div class="modal-header">
                         <h5 class="modal-title fs-2 fw-bold" id="exampleModalLabel">Veuillez confirmer la suprression</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -84,8 +84,8 @@
 
                     
                     <div class="modal-body container justify-center">
-                        <a class="btn btn-danger fs-5 fw-bold" href="?action=delete&id=<?= $article->getId(); ?>">OUI</a>
-                        <button type="button" class="btn btn-success fs-5 fw-bold" data-bs-dismiss="modal">NON</button>
+                        <a class="btn btn-outline-success" href="?action=delete&id=<?= $article->getId(); ?>">OUI</a>
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">NON</button>
                     </div>
                     
                 </div>

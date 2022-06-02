@@ -1,7 +1,7 @@
 <?php
 
-class Auteur{
-
+class Auteur
+{
     private $id;
     private $prenom;
     private $nom;
@@ -17,19 +17,48 @@ class Auteur{
         $this->setMdp($mdp);
     }
 
-    public function setId($id){$this->id = $id;}
-    public function getId(){return $this->id;}
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+    public function getId()
+    {
+        return $this->id;
+    }
 
-    public function setPrenom($prenom){$this->prenom  = $prenom;}
-    public function getPrenom(){return $this->prenom;}
+    public function setPrenom($prenom)
+    {
+        $this->prenom  = $prenom;
+    }
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
 
-    public function setNom($nom){$this->nom = $nom;}
-    public function getNom(){return $this->nom;}
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+    public function getNom()
+    {
+        return $this->nom;
+    }
 
-    public function setLogin($login){$this->login = $login;}
-    public function getLogin(){return $this->login;}
+    public function setLogin($login)
+    {
+        $this->login = $login;
+    }
+    public function getLogin()
+    {
+        return $this->login;
+    }
 
-    public function setMdp($mdp){$this->mdp = $mdp;}
-    public function getMdp(){$this->mdp;}
-
+    public function setMdp($mdp)
+    {
+        $this->mdp = $mdp;
+    }
+    public function getMdp()
+    {
+        $this->mdp;
+    }
 }

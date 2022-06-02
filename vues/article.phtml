@@ -12,13 +12,13 @@
         </p>
 
         <div>
-           <i class="fas fa-pen text-info"></i> <span class="text-info fs-5 fw-bold">Rédigé par</span> <span class="fw-bold fs-3"> <?= $mdl_auteur->getAuteur( $article->getAuteur())->getPrenom(); ?> </span>
+           <i class="fas fa-pen text-info"></i> <span class="text-info fs-5 fw-bold">Rédigé par</span> <span class="fw-bold fs-3"> <?= $mdl_auteur->getAuteur($article->getAuteur())->getPrenom(); ?> </span>
         </div>
     </div>
     
-    <?php if(!empty($commentaires)): ?>
+    <?php if (!empty($commentaires)): ?>
     <hr>
-        <?php foreach($commentaires as $key => $value): ?>
+        <?php foreach ($commentaires as $key => $value): ?>
             <div class="mx-5 p-2">
                 <i class="fas fa-comment text-info"></i> <span class="text-info fs-5 fw-bold">Rédigé par</span> <span class="fs-4 fw-bold fst-italic text-capitalize"><?= $value->getPseudo(); ?></span>
                 <div class="fs-5"><?= $value->getContenus(); ?></div>
@@ -27,7 +27,7 @@
         <?php endforeach; ?>
     <hr>   
     <?php endif; ?>  
-    <div class="mx-auto mt-5 w-50 border border-2 border-info p-4 bg-light rounded-3">
+    <div class="mx-auto mt-5 w-50 border border-2 border-info p-4 bg-dark rounded-3">
           <h4 class="fs-1 fw-bold text-center text-info text-capitalize bg-dark"> <i class="fas fa-comment"></i> Nouveau commentaire</h4>
           <form action="" method="post">
                <input type="hidden" name="id" value="<?= $article->getId(); ?>">

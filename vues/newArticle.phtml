@@ -7,9 +7,9 @@
     </div>
 
     
-    <div class="card mx-auto " style="width:400px">
-                <div class="card-body bg-info text-white">
-                        <h2 class="card-title text-center fs-1 fw-bold fst-italic"><i class="fas fa-file-alt"></i> Nouvel article</h2>
+    <div class="container card mx-auto d-block text-white bg-dark my-5" style="width:30%">
+                <div class="">
+                        <h2 class="text-center text-info text-uppercase fs-1 fst-italic fw-bold"><i class="fas fa-file-alt"></i> Nouvel article</h2>
                     <form action="" method="post">
 
                         <div class="form-group">
@@ -25,7 +25,7 @@
                             <div>
                                 <label for="" class="fs-2 fw-bold fst-italic">Auteur:</label>
                                 <select class="form-select" name="auteur">
-                                    <?php foreach($auteurs as $key => $auteur):?> 
+                                    <?php foreach ($auteurs as $key => $auteur):?> 
                                         <option value="<?= $auteur->getId() ?>">
                                             <?= $auteur->getPrenom() ?>
                                         </option>
@@ -36,14 +36,14 @@
                             <div>
                                 <label for="" class="fs-2 fw-bold fst-italic">Catégorie:</label>
                                 <select class="form-select" name="categorie">
-                                    <?php foreach($categories as $key => $categorie): ?>      
+                                    <?php foreach ($categories as $key => $categorie): ?>      
                                         <option value="<?= $categorie->getNom() ?>"><?= $categorie->getNom() ?></option>
                                     <?php endforeach; ?> 
                                 </select>
                             </div>   
                         <div class="mt-2 text-center">
-                            <input type="submit" class="btn btn-success fs-2 fw-bold fst-italic">
-                            <input type="reset" class="btn btn-danger fs-2 fw-bold ">
+                            <input type="submit" class="btn btn-outline-success mb-3">
+                            <input type="reset" class="btn btn-outline-danger mb-3 ">
                         </div>
                     </form>
                 
